@@ -156,7 +156,15 @@ class RootCommand(Feature):
         # Show websocket latency in milliseconds
         summary.append(f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms")
 
-        await ctx.send("\n".join(summary))
+        text = "\n".join(summary)
+        textdisplay = discord.ui.TextDisplay(text)
+        section = discord.ui.Section(textdisplay, accessory=discord.ui.Thumbnail(self.bot.user.display_avatar.url))
+        sep = discord.ui.Separator(visible=True, spacing=discord.SeparatorSpacing.small)
+        footer = discord.ui.TextDisplay("- **[Made with 💖 by Numb <$](https://discord.com/users/1020693089851027457)**")
+        container = discord.ui.Container(section, sep, footer)
+        view = discord.ui.LayoutView().add_item(container)
+        await ctx.send(view=view)
+        view.stop()
 
     # pylint: disable=no-member
     @Feature.Command(parent="jsk", name="hide")
