@@ -160,7 +160,7 @@ class RootCommand(Feature):
         textdisplay = discord.ui.TextDisplay(text)
         section = discord.ui.Section(textdisplay, accessory=discord.ui.Thumbnail(self.bot.user.display_avatar.url))
         sep = discord.ui.Separator(visible=True, spacing=discord.SeparatorSpacing.small)
-        footer = discord.ui.TextDisplay("- **Made with 💖 by Numb <$**")
+        footer = discord.ui.TextDisplay("- Developer: **Numb <$**")
         container = discord.ui.Container(section, sep, footer)
         view = discord.ui.LayoutView().add_item(container)
         await ctx.send(view=view)
